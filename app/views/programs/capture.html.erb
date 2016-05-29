@@ -1,0 +1,7 @@
+一覧取得
+<%= form_tag('/programs/capture', method: 'get') do %>
+<%= select_tag('year', options_for_select(@target_year_options, @year)) %>
+<%= select_tag('month', options_for_select(@target_month_options, @month)) %>
+<%= submit_tag('プログラム取得') %>
+<% end %>
+

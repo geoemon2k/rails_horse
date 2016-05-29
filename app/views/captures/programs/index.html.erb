@@ -1,0 +1,7 @@
+captures/programs/index
+スケジュール取得
+<%= form_tag("/captures/programs", method: "post") do %>
+<%= select_tag("target_year", options_for_select(@target_years, Time.now.year)) %>
+<%= select_tag("target_month", options_for_select(@target_month_options, Time.now.month)) %>
+<%= submit_tag("日付取り込み") %>
+<% end %>

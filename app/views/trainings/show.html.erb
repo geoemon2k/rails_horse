@@ -1,0 +1,9 @@
+<% @trainings.each do |training| %>
+<%= training.date %><br>
+<% end %>
+
+<%= form_for Training.new do |f| %>
+<%= f.text_field :field_id %>
+<%= f.submit %>
+<% end %>
+

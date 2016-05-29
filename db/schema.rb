@@ -11,13 +11,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160104134511) do
+ActiveRecord::Schema.define(version: 20160515134313) do
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "email",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "horses", force: :cascade do |t|
+    t.string  "name",       limit: 255, null: false
+    t.integer "birth_year", limit: 4,   null: false
+    t.string  "sex",        limit: 255, null: false
+  end
+
+  create_table "jockeys", force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+  end
+
+  create_table "programs", force: :cascade do |t|
+    t.integer "place_id",      limit: 4,                  null: false
+    t.integer "year",          limit: 4,                  null: false
+    t.integer "month",         limit: 4,                  null: false
+    t.integer "day",           limit: 4,                  null: false
+    t.integer "num",           limit: 4,                  null: false
+    t.string  "name",          limit: 255,                null: false
+    t.integer "distance",      limit: 4,   default: 1000
+    t.integer "field_kind_id", limit: 4,                  null: false
+  end
+
+  create_table "race_plants", force: :cascade do |t|
+    t.string "name",      limit: 255, null: false
+    t.string "direction", limit: 255, null: false
+  end
+
+  create_table "race_results", force: :cascade do |t|
+    t.integer "horse_id",      limit: 4,   null: false
+    t.integer "program_id",    limit: 4,   null: false
+    t.integer "jockey_id",     limit: 4,   null: false
+    t.integer "jockey_weight", limit: 4,   null: false
+    t.integer "weight",        limit: 4,   null: false
+    t.integer "rank",          limit: 4,   null: false
+    t.integer "uma_num",       limit: 4,   null: false
+    t.integer "waku_num",      limit: 4,   null: false
+    t.string  "corner_3f",     limit: 255, null: false
+    t.string  "corner_4f",     limit: 255, null: false
+    t.time    "total_time",                null: false
+    t.time    "time_3f",                   null: false
+    t.string  "chakusa",       limit: 255, null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "year",  limit: 4,   null: false
+    t.integer "month", limit: 4,   null: false
+    t.string  "days",  limit: 255, null: false
+  end
+
+  create_table "training_fields", force: :cascade do |t|
+    t.string "name",   limit: 255, null: false
+    t.time   "avg_6f"
+    t.time   "avg_5f"
+    t.time   "avg_4f"
+    t.time   "avg_3f",             null: false
+    t.time   "avg_2f",             null: false
+    t.time   "avg_1f",             null: false
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.integer "horse_id", limit: 4,   null: false
+    t.date    "date",                 null: false
+    t.time    "time_6f",              null: false
+    t.time    "time_5f",              null: false
+    t.time    "time_4f",              null: false
+    t.time    "time_3f",              null: false
+    t.time    "time_2f",              null: false
+    t.time    "time_1f",              null: false
+    t.integer "field_id", limit: 4,   null: false
+    t.string  "jockey",   limit: 255, null: false
+    t.integer "status",   limit: 4,   null: false
   end
 
 end

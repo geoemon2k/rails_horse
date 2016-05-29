@@ -1,0 +1,17 @@
+<% if @programs %>
+<%= @target_year + '/' + @target_month + '/' + @target_day %> <<%= @fields[@target_field_id.to_i - 1].name %>><br>
+<table border=1>
+<tr>
+  <td>[レース番号]</td>
+  <td>[レース名]</td>
+  <td>[距離]</td>
+<% @programs.each do |program| %>
+<tr>
+  <td><%= program.num %>R</td>
+  <td><%= link_to "#{program.name}", "/program/detail/#{program.id}" %></td>
+  <td><%= program.distance %></td>
+  <td><%= link_to "取込", "/program/list/#{program.id}", method: :post %></td>
+</tr>
+<% end %>
+</table>
+<% end %>

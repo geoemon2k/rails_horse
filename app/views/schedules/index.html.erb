@@ -1,0 +1,18 @@
+<% if @schedules %>
+<% @schedules.each do |schedule| %>
+<%= @year %>年<%= sprintf("%02d", @month])) %>
+<table border=1>
+  <tr>
+    <td><%= schedule.days %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
+
+一覧取得
+<%= form_tag('/schedules', method: 'get') do %>
+<%= select_tag('year', options_for_select(@target_year_options, @year)) %>
+<%= select_tag('month', options_for_select(@target_month_options, @month)) %>
+<%= submit_tag('スケジュール表示') %>
+<% end %>
+

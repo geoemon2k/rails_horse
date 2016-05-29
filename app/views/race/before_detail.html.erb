@@ -1,0 +1,28 @@
+before_detail
+レース名: <%= @program.year %>/<%= @program.month %>/<%= @program.day %> <%= @program.name %><br>
+<table border=1>
+  <tr>
+    <td>着</td>
+    <td>差</td>
+    <td>馬</td>
+    <td>枠</td>
+    <td>馬名</td>
+    <td>騎手</td>
+    <td>タイム</td>
+    <td>3ハロン</td>
+  </tr>
+  <% @race_datas.each do |data| %>
+  <tr>
+    <td><%= data.rank %></td>
+    <td><%= data.chakusa %></td>
+    <td><%= data.uma_num %></td>
+    <td><%= data.waku_num %></td>
+    <td><%= link_to data.horse.name, horse_path(data.horse_id) %></td>
+    <td><%= data.jockey.name %></td>
+    <td><%= data.total_time %></td>
+    <td><%= data.time_3f %></td>
+    <td><%= link_to '調教', training_path(data.horse_id) %></td>
+  </tr>
+<% end %>
+</table>
+

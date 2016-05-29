@@ -1,0 +1,10 @@
+<% @horses.each do |horse| %>
+<%= horse.name %>[<%= Time.current.year - horse.birth_year %>](<%= horse.sex %>)<br>
+<% end %>
+
+<%= form_for Horse.new do |f| %>
+  Name: <%= f.text_field :name %><br>
+  Birth: <%= f.number_field :birth_year %><br>
+  Sex: <%= f.text_field :sex %><br>
+  <%= f.submit %>
+<% end %>

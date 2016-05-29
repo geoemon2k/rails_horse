@@ -1,0 +1,12 @@
+  <table border=1>
+  <% @programs.each do |set| %>
+  <tr>
+    <td><%= set['date'] %></td>
+    <td><%= set['name'] %></td>
+    <td><%= set['field_id'] %></td>
+    <td><%= set['birth'] %></td>
+    <td><%= set['distance'] %></td>
+    <td><%= set['ground_id'] %></td>
+  </tr>
+  <% end %>
+</table>

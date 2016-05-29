@@ -1,0 +1,9 @@
+index race
+  <% @races.each do |set| %>
+  <tr>
+    <td><%= set.id %></td>
+    <td><%= set.name %></td>
+    <td><%= set.distance %></td>
+  </tr>
+  <% end %>
+</table>

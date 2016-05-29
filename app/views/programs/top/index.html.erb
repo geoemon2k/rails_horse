@@ -1,0 +1,17 @@
+プログラム取得
+<%= form_tag("/program/top", method: "get") do %>
+<%= select_tag("target_year", options_for_select(@target_year_options, Time.now.year)) %>
+<%= select_tag("target_month", options_for_select(@target_month_options, Time.now.month)) %>
+<%= submit_tag("開催日取得") %>
+<% end %>
+
+[プログラム一覧]<br>
+<% if @programs %>
+<%= @target_year %>年<%= @target_month %>月
+<table>
+<% @programs.each do |program| %>
+<tr><td>
+<%= link_to "#{program.day}日 <#{@fields[program.field_id - 1].name}>", "/program/list?target_year=#{@target_year}&target_month=#{@target_month}&target_day=#{program.day}&target_field_id=#{program.field_id}" %>
+<% end %>
+</table>
+<% end %>

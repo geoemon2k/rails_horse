@@ -1,0 +1,10 @@
+<% if @schedules %>
+<% @schedules.each do |schedule| %>
+<%= @year %>年<%= sprintf("%02d", @month])) %>
+<table border=1>
+  <tr>
+    <td><%= schedule.days %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
